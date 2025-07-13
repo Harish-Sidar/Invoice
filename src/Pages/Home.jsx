@@ -1,9 +1,19 @@
- import React from 'react'
+ import React, { useState } from 'react'
 import Header from '../components/Header'
 import { Box,Typography,Button } from '@mui/material'
 import Addinvoice from '../components/Addinvoice'
  
  const Home = () => {
+
+const [addinvoice, setAddInvoice] = useState(false);
+
+const toggleInvoice = () => {
+  setAddInvoice(true);
+
+}
+
+
+
    return (
     <>
     <Header/>
@@ -11,8 +21,15 @@ import Addinvoice from '../components/Addinvoice'
         <Typography variant='h4'>
             Pending Invoice
         </Typography>
-        <Button variant='contained' style={{marginTop : 15}}>Add Invoice</Button>
-        <Addinvoice/>
+
+       { !addinvoice && <Button 
+        variant='contained'
+         style={{marginTop : 15}}
+         onClick={() => toggleInvoice() }
+         >
+          Add Invoice</Button>
+          }
+       { addinvoice && <Addinvoice/>}
     </Box>
     </>
    )
